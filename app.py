@@ -22,7 +22,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_compress import Compress
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://admin:D7jS1hVPLgofYhZDsRZBdcshluhh5kpU@dpg-d06de9juibrs73efmc9g-a/tadawulhub_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
