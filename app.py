@@ -19,11 +19,16 @@ from email.mime.text import MIMEText
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+from flask_compress import Compress
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+
+compress = Compress()
+compress.init_app(app)
 
 # Add this:
 with app.app_context():
