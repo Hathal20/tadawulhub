@@ -1,0 +1,128 @@
+/* styles.css
+This file adds styling and good looks to the frontend.
+Feel free to adjust colors, sizes, etc.
+*/
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #000000;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(to right, #1f4f7e, #2f5f8e);
+    color: #ffffff;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.app-title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.9em;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.toolbar {
+    padding: 10px;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.small {
+    width: 50px;
+}
+
+.button {
+    padding: 5px 10px;
+    background: #1f4f7e;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.button:hover {
+    background: #2f5f8e;
+}
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.chart-area {
+    width: 100%;
+    height: 400px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.small-chart {
+    height: 150px;
+}
+
+/* Dark mode styles (we will apply a .dark class to the body) */
+body.dark {
+    background: #202020;
+    color: #ffffff;
+}
+
+body.dark .header {
+    background: linear-gradient(to right, #2a2a2a, #3a3a3a);
+}
+
+body.dark .toolbar {
+    background: #303030;
+}
+
+body.dark .input {
+    background: #404040;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+
+body.dark .button {
+    background: #404040;
+}
+
+body.dark .chart-area {
+    background: #2a2a2a;
+    border: 1px solid #555;
+}
+
+a[href*="tradingview.com"] {
+    display: none !important;
+}

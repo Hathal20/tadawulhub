@@ -1,0 +1,64 @@
+2025-04-26 12:16:28,612 DEBUG urllib3.connectionpool: Starting new HTTPS connection (1): en.wikipedia.org:443
+2025-04-26 12:16:29,694 DEBUG urllib3.connectionpool: https://en.wikipedia.org:443 "GET /wiki/List_of_S%26P_500_companies HTTP/1.1" 200 103383
+2025-04-26 12:16:30,265 INFO werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-26 12:16:30,265 INFO werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-26 12:16:30,266 INFO werkzeug:  * Restarting with stat
+2025-04-26 12:16:30,899 DEBUG urllib3.connectionpool: Starting new HTTPS connection (1): en.wikipedia.org:443
+2025-04-26 12:16:31,734 DEBUG urllib3.connectionpool: https://en.wikipedia.org:443 "GET /wiki/List_of_S%26P_500_companies HTTP/1.1" 200 103383
+2025-04-26 12:16:32,288 WARNING werkzeug:  * Debugger is active!
+2025-04-26 12:16:32,299 INFO werkzeug:  * Debugger PIN: 656-434-100
+2025-04-26 12:17:16,801 DEBUG urllib3.connectionpool: Starting new HTTPS connection (1): en.wikipedia.org:443
+2025-04-26 12:17:17,492 DEBUG urllib3.connectionpool: https://en.wikipedia.org:443 "GET /wiki/List_of_S%26P_500_companies HTTP/1.1" 200 103383
+2025-04-26 12:17:18,045 INFO werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-26 12:17:18,045 INFO werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-26 12:17:18,046 INFO werkzeug:  * Restarting with stat
+2025-04-26 12:17:18,714 DEBUG urllib3.connectionpool: Starting new HTTPS connection (1): en.wikipedia.org:443
+2025-04-26 12:17:19,470 DEBUG urllib3.connectionpool: https://en.wikipedia.org:443 "GET /wiki/List_of_S%26P_500_companies HTTP/1.1" 200 103383
+2025-04-26 12:17:20,025 WARNING werkzeug:  * Debugger is active!
+2025-04-26 12:17:20,038 INFO werkzeug:  * Debugger PIN: 656-434-100
+2025-04-26 12:17:24,186 INFO werkzeug: 127.0.0.1 - - [26/Apr/2025 12:17:24] "GET / HTTP/1.1" 200 -
+2025-04-26 12:17:24,242 INFO werkzeug: 127.0.0.1 - - [26/Apr/2025 12:17:24] "[36mGET /static/spinner.css HTTP/1.1[0m" 304 -
+2025-04-26 12:17:24,243 INFO werkzeug: 127.0.0.1 - - [26/Apr/2025 12:17:24] "[36mGET /static/logo.svg HTTP/1.1[0m" 304 -
+2025-04-26 12:17:24,628 INFO werkzeug: 127.0.0.1 - - [26/Apr/2025 12:17:24] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+2025-04-26 12:19:52,694 DEBUG urllib3.connectionpool: Starting new HTTPS connection (1): en.wikipedia.org:443
+2025-04-26 12:19:53,292 DEBUG urllib3.connectionpool: https://en.wikipedia.org:443 "GET /wiki/List_of_S%26P_500_companies HTTP/1.1" 200 103383
+2025-04-26 12:19:53,755 INFO werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-26 12:19:53,756 INFO werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-26 12:19:53,756 INFO werkzeug:  * Restarting with stat
+2025-04-26 12:19:54,219 DEBUG urllib3.connectionpool: Starting new HTTPS connection (1): en.wikipedia.org:443
+2025-04-26 12:19:54,812 DEBUG urllib3.connectionpool: https://en.wikipedia.org:443 "GET /wiki/List_of_S%26P_500_companies HTTP/1.1" 200 103383
+2025-04-26 12:19:55,264 WARNING werkzeug:  * Debugger is active!
+2025-04-26 12:19:55,274 INFO werkzeug:  * Debugger PIN: 656-434-100
+2025-04-26 12:20:05,608 INFO werkzeug: 127.0.0.1 - - [26/Apr/2025 12:20:05] "GET / HTTP/1.1" 200 -
+2025-04-26 12:20:05,693 INFO werkzeug: 127.0.0.1 - - [26/Apr/2025 12:20:05] "[36mGET /static/spinner.css HTTP/1.1[0m" 304 -
+2025-04-26 12:20:05,696 INFO werkzeug: 127.0.0.1 - - [26/Apr/2025 12:20:05] "[36mGET /static/logo.svg HTTP/1.1[0m" 304 -
+2025-04-26 12:20:05,878 INFO werkzeug: 127.0.0.1 - - [26/Apr/2025 12:20:05] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+2025-04-26 12:20:53,044 INFO werkzeug:  * Detected change in '/Users/hathalben/PycharmProjects/ChartingAppBackend/app.py', reloading
+2025-04-26 12:20:53,225 INFO werkzeug:  * Restarting with stat
+2025-04-26 12:20:54,008 DEBUG urllib3.connectionpool: Starting new HTTPS connection (1): en.wikipedia.org:443
+2025-04-26 12:20:54,840 DEBUG urllib3.connectionpool: https://en.wikipedia.org:443 "GET /wiki/List_of_S%26P_500_companies HTTP/1.1" 200 103383
+2025-04-26 12:20:55,471 WARNING werkzeug:  * Debugger is active!
+2025-04-26 12:20:55,479 INFO werkzeug:  * Debugger PIN: 656-434-100
+2025-04-26 12:22:45,304 DEBUG urllib3.connectionpool: Starting new HTTPS connection (1): en.wikipedia.org:443
+2025-04-26 12:22:45,886 DEBUG urllib3.connectionpool: https://en.wikipedia.org:443 "GET /wiki/List_of_S%26P_500_companies HTTP/1.1" 200 103383
+2025-04-26 12:22:46,411 INFO werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-26 12:22:46,411 INFO werkzeug: [33mPress CTRL+C to quit[0m
+2025-04-26 12:22:46,411 INFO werkzeug:  * Restarting with stat
+2025-04-26 12:22:47,075 DEBUG urllib3.connectionpool: Starting new HTTPS connection (1): en.wikipedia.org:443
+2025-04-26 12:22:47,680 DEBUG urllib3.connectionpool: https://en.wikipedia.org:443 "GET /wiki/List_of_S%26P_500_companies HTTP/1.1" 200 103383
+2025-04-26 12:22:48,136 WARNING werkzeug:  * Debugger is active!
+2025-04-26 12:22:48,144 INFO werkzeug:  * Debugger PIN: 656-434-100
+2025-04-26 12:22:51,722 INFO werkzeug: 127.0.0.1 - - [26/Apr/2025 12:22:51] "GET / HTTP/1.1" 200 -
+2025-04-26 12:22:51,758 INFO werkzeug: 127.0.0.1 - - [26/Apr/2025 12:22:51] "[36mGET /static/spinner.css HTTP/1.1[0m" 304 -
+2025-04-26 12:22:51,759 INFO werkzeug: 127.0.0.1 - - [26/Apr/2025 12:22:51] "[36mGET /static/logo.svg HTTP/1.1[0m" 304 -
+2025-04-26 12:22:51,961 INFO werkzeug: 127.0.0.1 - - [26/Apr/2025 12:22:51] "[36mGET /static/main.js HTTP/1.1[0m" 304 -
+2025-04-26 12:22:52,258 INFO werkzeug:  * Detected change in '/Users/hathalben/PycharmProjects/ChartingAppBackend/app.py', reloading
+2025-04-26 12:22:52,440 INFO werkzeug:  * Restarting with stat
+2025-04-26 12:22:53,031 DEBUG urllib3.connectionpool: Starting new HTTPS connection (1): en.wikipedia.org:443
+2025-04-26 12:22:53,654 DEBUG urllib3.connectionpool: https://en.wikipedia.org:443 "GET /wiki/List_of_S%26P_500_companies HTTP/1.1" 200 103383
+2025-04-26 12:22:54,179 WARNING werkzeug:  * Debugger is active!
+2025-04-26 12:22:54,186 INFO werkzeug:  * Debugger PIN: 656-434-100

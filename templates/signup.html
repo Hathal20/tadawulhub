@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>TadawulHub - Sign Up</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .background-image {
+        background-image: url('{{ url_for('static', filename='modern_background.jpg') }}');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+    }
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(15px);
+        border-radius: 16px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+</style>
+</head>
+<body class="bg-white text-black background-image">
+
+<header class="p-4 bg-transparent text-white flex justify-between items-center">
+    <div class="flex items-center space-x-4">
+        <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo" class="h-14">
+        <span class="text-3xl font-bold">TadawulHub</span>
+    </div>
+    <nav class="flex space-x-6 text-lg">
+        <a href="/" class="hover:underline transition duration-300">Home</a>
+        <a href="/watchlist" class="hover:underline transition duration-300">Watchlist</a>
+        <a href="/about" class="hover:underline transition duration-300">About</a>
+        <a href="/signup" class="font-semibold underline">Sign Up</a>
+    </nav>
+</header>
+
+<main class="flex items-center justify-center min-h-screen">
+    <div class="p-8 max-w-lg mx-auto glass-effect">
+        <h2 class="text-3xl font-bold mb-6 text-blue-900">Sign Up</h2>
+
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div id="flash-message" class="mb-4 p-3 border border-blue-500 text-blue-800 rounded">
+                    {{ messages[0] }}
+                </div>
+
+    <!-- If the message is a success, auto-redirect after 4 seconds -->
+        <script>
+            if (document.getElementById('flash-message').innerText.includes('تم التسجيل بنجاح')) {
+                setTimeout(function() {
+                window.location.href = "/";
+                    }, 4000);
+            }
+        </script>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('signup') }}" class="space-y-6">
+        <div>
+            <label for="الأسم" class="block mb-2 font-semibold">الاسم:</label>
+            <input type="text" id="الأسم" name="الأسم" class="p-3 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="ادخل اسمك الكامل" required>
+        </div>
+        <div>
+            <label for="الايميل" class="block mb-2 font-semibold">البريد الإلكتروني:</label>
+            <input type="email" id="الايميل" name="الايميل" class="p-3 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="ادخل بريدك الإلكتروني" required>
+        </div>
+        <button type="submit" class="w-full p-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition duration-300">تسجيل</button>
+        </form>
+
+
+        <p class="mt-6 text-sm text-center">Already have an account? <a href="/login" class="text-blue-700 hover:underline">Log in</a></p>
+
+        <button onclick="window.history.back()" class="w-full mt-4 p-3 bg-gray-700 text-white rounded hover:bg-gray-800 transition duration-300">Return</button>
+    </div>
+</main>
+
+</body>
+</html>
