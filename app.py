@@ -30,14 +30,15 @@ db = SQLAlchemy(app)
 compress = Compress()
 compress.init_app(app)
 
-# Add this:
-with app.app_context():
-    db.create_all()
-
 class User(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
     name  = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+
+# Add this:
+with app.app_context():
+    db.create_all()
+
 
 import logging
 
