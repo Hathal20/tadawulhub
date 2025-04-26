@@ -50,8 +50,9 @@
     <nav class="flex flex-wrap justify-center gap-4 mt-4 md:mt-0 text-lg w-full md:w-auto">
       <a href="/" class="hover:underline transition duration-300">الرئيسية</a>
       <a href="/watchlist" class="hover:underline transition duration-300">قائمة الشركات</a>
-      <a href="/about" class="hover:underline transition duration-300">About</a>
       <a href="/signup" class="font-semibold underline">تسجيل</a>
+        <a href="/about" class="hover:underline transition duration-300">About</a>
+
     </nav>
   </header>
 
@@ -59,7 +60,7 @@
   <div id="loadingOverlay"><div class="loader">Loading…</div></div>
 
   <!-- ===== Layout ===== -->
-  <div class="flex h-screen">
+  <div class="flex h-screen overflow-auto">
       <!-- left: toolbar + charts -->
       <div class="flex-grow flex flex-col">
 
@@ -134,7 +135,7 @@
       </div>
 
       <!-- right: watch-list (no `.hidden`, Tailwind will show on lg+) -->
-      <aside id="watchlist" class="p-4 bg-gray-50 text-black w-64 border-l lg:block overflow-auto transition-colors">
+      <aside id="watchlist" class="hidden lg:block p-4 bg-gray-50 text-black w-64 border-l overflow-auto transition-colors">
           <h3 class="font-bold text-lg mb-4 text-blue-800">Watchlist</h3>
           <div id="watchlistContent" class="space-y-4 text-sm"></div>
       </aside>
