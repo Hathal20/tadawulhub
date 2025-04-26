@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
   <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TadawulHub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TadawulHub</title>
 
   <!-- Tailwind (dev CDN build is fine for now) -->
   <script defer src="https://cdn.tailwindcss.com"></script>
@@ -14,23 +13,21 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='spinner.css') }}"/>
 
   <style>
-      body{font-family:'Inter',sans-serif}
-
-      /* global loader */
-      #loadingOverlay{
-          position:fixed;top:0;left:0;width:100%;height:100%;
-          display:flex;align-items:center;justify-content:center;
-          background:rgba(0,0,0,.3);visibility:hidden;opacity:0;
-          transition:visibility 0s,opacity .3s;z-index:50}
-      #loadingOverlay.show{visibility:visible;opacity:1}
-
-      /* small hover helpers created dynamically from JS */
-      .autocomplete-item:hover{background:#f7f7f7}
-      .watchlist-item:hover{background:#f0f0f0;cursor:pointer}
-
-      /* guarantee the containers have a height on first paint */
-      #chart    {min-height:500px;height:calc(75vh - 120px)}
-      #rsiChart {min-height:160px}
+    body { font-family:'Inter',sans-serif }
+    /* global loader */
+    #loadingOverlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,.3); visibility: hidden; opacity: 0;
+      transition: visibility 0s, opacity .3s; z-index: 50;
+    }
+    #loadingOverlay.show { visibility: visible; opacity: 1 }
+    /* hover helpers */
+    .autocomplete-item:hover { background: #f7f7f7 }
+    .watchlist-item:hover    { background: #f0f0f0; cursor: pointer }
+    /* chart heights */
+    #chart    { min-height: 500px; height: calc(75vh - 120px) }
+    #rsiChart { min-height: 160px }
   </style>
 
   <!-- TradingView Lightweight-Charts -->
@@ -41,7 +38,6 @@
 
 <body class="bg-white text-black">
   <!-- ===== Header ===== -->
-
   <header class="p-4 bg-blue-600 text-white flex flex-wrap justify-between items-center w-full overflow-hidden">
     <div class="flex items-center space-x-4 flex-shrink-0">
       <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo" class="h-14">
@@ -50,9 +46,8 @@
     <nav class="flex flex-wrap justify-center gap-4 mt-4 md:mt-0 text-lg w-full md:w-auto">
       <a href="/" class="hover:underline transition duration-300">الرئيسية</a>
       <a href="/watchlist" class="hover:underline transition duration-300">قائمة الشركات</a>
-      <a href="/signup" class="font-semibold underline">تسجيل</a>
-        <a href="/about" class="hover:underline transition duration-300">About</a>
-
+      <a href="/signup"   class="font-semibold underline">تسجيل</a>
+      <a href="/about"    class="hover:underline transition duration-300">About</a>
     </nav>
   </header>
 
@@ -60,85 +55,101 @@
   <div id="loadingOverlay"><div class="loader">Loading…</div></div>
 
   <!-- ===== Layout ===== -->
-  <div class="flex h-screen overflow-auto">
-      <!-- left: toolbar + charts -->
-      <div class="flex-grow flex flex-col">
-
-          <!-- toolbar -->
-          <div id="toolbar" class="p-2 bg-gray-100 flex flex-wrap items-center gap-2 shadow-sm transition-colors">
-
-              <!-- symbol search -->
-              <div class="relative">
-                  <input id="ticker" type="text" placeholder="Search symbol…" class="p-2 rounded border w-48 bg-white text-black"/>
-                  <div id="autocompleteList" class="hidden absolute bg-white border w-48 rounded mt-1 z-10"></div>
-              </div>
-
-              <!-- timeframe -->
-              <select id="timeframe" class="p-2 rounded border bg-white text-black">
-                  <option value="1m">1&nbsp;m</option><option value="5m">5&nbsp;m</option>
-                  <option value="15m">15&nbsp;m</option><option value="60m">1&nbsp;h</option>
-                  <option value="1d" selected>1&nbsp;d</option><option value="1wk">1&nbsp;wk</option>
-                  <option value="1mo">1&nbsp;mo</option>
-              </select>
-
-              <!-- indicator params -->
-              <input id="emaPeriod" type="number" value="20" min="1"  max="200" class="p-2 rounded border w-16 bg-white text-black" placeholder="EMA"/>
-              <input id="rsiPeriod" type="number" value="14" min="1"  max="200" class="p-2 rounded border w-16 bg-white text-black" placeholder="RSI"/>
-
-              <!-- indicator toggles -->
-              <div class="flex flex-wrap items-center gap-3 text-sm">
-                  <span class="font-semibold">Indicators:</span>
-                  <label class="flex items-center gap-1"><input id="toggleEMA"      type="checkbox" class="h-4 w-4" checked/>EMA</label>
-                  <label class="flex items-center gap-1"><input id="toggleSMA50"    type="checkbox" class="h-4 w-4"/>SMA&nbsp;50</label>
-                  <label class="flex items-center gap-1"><input id="toggleSMA200"   type="checkbox" class="h-4 w-4"/>SMA&nbsp;200</label>
-                  <label class="flex items-center gap-1"><input id="toggleBBands"   type="checkbox" class="h-4 w-4"/>BB</label>
-                  <label class="flex items-center gap-1"><input id="toggleMACD"     type="checkbox" class="h-4 w-4"/>MACD</label>
-                  <label class="flex items-center gap-1"><input id="toggleStochRSI" type="checkbox" class="h-4 w-4"/>Stoch&nbsp;RSI</label>
-                  <label class="flex items-center gap-1"><input id="toggleRSI"      type="checkbox" class="h-4 w-4" checked/>RSI</label>
-                  <label class="flex items-center gap-1"><input id="toggleVolume"   type="checkbox" class="h-4 w-4"/>Volume</label>
-                  <label class="flex items-center gap-1"><input id="toggleVWAP"     type="checkbox" class="h-4 w-4"/>VWAP</label>
-              </div>
-
-              <!-- search -->
-              <button id="searchButton" class="p-2 bg-blue-500 text-white rounded hover:bg-blue-600">Search</button>
-
-              <!-- auto-update -->
-              <label class="flex items-center gap-1 text-sm"><input id="autoUpdate" type="checkbox" class="h-4 w-4"/>Auto</label>
-              <input id="updateFrequency" type="number" value="5" min="1" class="p-1 rounded border w-12 bg-white text-black"/>
-
-              <!-- theme switch -->
-              <button id="themeToggle" class="p-2 bg-gray-700 text-white rounded hover:bg-gray-600">Dark</button>
-          </div>
-
-          <!-- drawing tools -->
-          <div id="drawingToolsBar" class="p-2 bg-gray-50 flex flex-wrap items-center gap-2 border-b transition-colors text-sm">
-              <span class="font-semibold">Draw:</span>
-              <label class="flex items-center gap-1"><input id="toggleTrendLine" type="checkbox" class="h-4 w-4"/>Trend</label>
-              <label class="flex items-center gap-1"><input id="toggleFib"       type="checkbox" class="h-4 w-4"/>Fib</label>
-              <label class="flex items-center gap-1"><input id="toggleText"      type="checkbox" class="h-4 w-4"/>Text</label>
-              <label class="flex items-center gap-1"><input id="toggleBrush"     type="checkbox" class="h-4 w-4"/>Brush</label>
-          </div>
-
-          <!-- charts -->
-          <main id="mainContainer" class="flex-grow flex flex-col relative bg-white transition-colors">
-              <div id="chart"    class="flex-grow"></div>
-              <div id="noDataMessage" class="hidden absolute inset-0 flex items-center justify-center text-xl text-gray-500 font-semibold">
-                  No data available.
-              </div>
-              <div id="rsiChart" class="h-1/4"></div>
-          </main>
-
-          <!-- footer -->
-          <footer class="p-2 text-center text-xs text-gray-500 border-t">
-              <span id="lastUpdated">Last Updated –</span>
-          </footer>
+  <div class="flex h-screen overflow-hidden">
+    <!-- left: toolbar + charts -->
+    <div class="flex-grow flex flex-col overflow-auto">
+      <!-- toolbar -->
+      <div id="toolbar" class="p-2 bg-gray-100 flex flex-wrap items-center gap-2 shadow-sm transition-colors">
+        <!-- symbol search -->
+        <div class="relative">
+          <input id="ticker" type="text" placeholder="Search symbol…" class="p-2 rounded border w-48 bg-white text-black"/>
+          <div id="autocompleteList" class="hidden absolute bg-white border w-48 rounded mt-1 z-10"></div>
+        </div>
+        <!-- timeframe -->
+        <select id="timeframe" class="p-2 rounded border bg-white text-black">
+          <option value="1m">1&nbsp;m</option><option value="5m">5&nbsp;m</option>
+          <option value="15m">15&nbsp;m</option><option value="60m">1&nbsp;h</option>
+          <option value="1d" selected>1&nbsp;d</option><option value="1wk">1&nbsp;wk</option>
+          <option value="1mo">1&nbsp;mo</option>
+        </select>
+        <!-- indicator params -->
+        <input id="emaPeriod" type="number" value="20" min="1" max="200" class="p-2 rounded border w-16 bg-white text-black" placeholder="EMA"/>
+        <input id="rsiPeriod" type="number" value="14" min="1" max="200" class="p-2 rounded border w-16 bg-white text-black" placeholder="RSI"/>
+        <!-- indicator toggles -->
+        <div class="flex flex-wrap items-center gap-3 text-sm">
+          <span class="font-semibold">Indicators:</span>
+          <label class="flex items-center gap-1"><input id="toggleEMA"      type="checkbox" class="h-4 w-4" checked/>EMA</label>
+          <label class="flex items-center gap-1"><input id="toggleSMA50"    type="checkbox" class="h-4 w-4"/>SMA&nbsp;50</label>
+          <label class="flex items-center gap-1"><input id="toggleSMA200"   type="checkbox" class="h-4 w-4"/>SMA&nbsp;200</label>
+          <label class="flex items-center gap-1"><input id="toggleBBands"   type="checkbox" class="h-4 w-4"/>BB</label>
+          <label class="flex items-center gap-1"><input id="toggleMACD"     type="checkbox" class="h-4 w-4"/>MACD</label>
+          <label class="flex items-center gap-1"><input id="toggleStochRSI" type="checkbox" class="h-4 w-4"/>Stoch&nbsp;RSI</label>
+          <label class="flex items-center gap-1"><input id="toggleRSI"      type="checkbox" class="h-4 w-4" checked/>RSI</label>
+          <label class="flex items-center gap-1"><input id="toggleVolume"   type="checkbox" class="h-4 w-4"/>Volume</label>
+          <label class="flex items-center gap-1"><input id="toggleVWAP"     type="checkbox" class="h-4 w-4"/>VWAP</label>
+        </div>
+        <!-- search -->
+        <button id="searchButton" class="p-2 bg-blue-500 text-white rounded hover:bg-blue-600">Search</button>
+        <!-- auto-update -->
+        <label class="flex items-center gap-1 text-sm"><input id="autoUpdate" type="checkbox" class="h-4 w-4"/>Auto</label>
+        <input id="updateFrequency" type="number" value="5" min="1" class="p-1 rounded border w-12 bg-white text-black"/>
+        <!-- theme switch -->
+        <button id="themeToggle" class="p-2 bg-gray-700 text-white rounded hover:bg-gray-600">Dark</button>
       </div>
+      <!-- drawing tools -->
+      <div id="drawingToolsBar" class="p-2 bg-gray-50 flex flex-wrap items-center gap-2 border-b transition-colors text-sm">
+        <span class="font-semibold">Draw:</span>
+        <label class="flex items-center gap-1"><input id="toggleTrendLine" type="checkbox" class="h-4 w-4"/>Trend</label>
+        <label class="flex items-center gap-1"><input id="toggleFib"       type="checkbox" class="h-4 w-4"/>Fib</label>
+        <label class="flex items-center gap-1"><input id="toggleText"      type="checkbox" class="h-4 w-4"/>Text</label>
+        <label class="flex items-center gap-1"><input id="toggleBrush"     type="checkbox" class="h-4 w-4"/>Brush</label>
+      </div>
+      <!-- charts -->
+      <main id="mainContainer" class="flex-grow flex flex-col relative bg-white transition-colors">
+        <div id="chart"        class="flex-grow"></div>
+        <div id="noDataMessage" class="hidden absolute inset-0 flex items-center justify-center text-xl text-gray-500 font-semibold">
+          No data available.
+        </div>
+        <div id="rsiChart"     class="h-1/4"></div>
+      </main>
+      <!-- footer -->
+      <footer class="p-2 text-center text-xs text-gray-500 border-t">
+        <span id="lastUpdated">Last Updated –</span>
+      </footer>
+    </div>
 
-      <!-- right: watch-list (no `.hidden`, Tailwind will show on lg+) -->
-      <aside id="watchlist" class="hidden lg:block p-4 bg-gray-50 text-black w-64 border-l overflow-auto transition-colors">
-          <h3 class="font-bold text-lg mb-4 text-blue-800">Watchlist</h3>
-          <div id="watchlistContent" class="space-y-4 text-sm"></div>
+    <!-- right: collapsible watch-list -->
+    <div id="sidebarContainer" class="relative h-full">
+      <aside id="watchlist"
+             class="p-4 bg-gray-50 text-black w-64 border-l overflow-auto
+                    transition-transform duration-300 transform translate-x-0 lg:translate-x-0">
+        <h3 class="font-bold text-lg mb-4 text-blue-800">Watchlist</h3>
+        <div id="watchlistContent" class="space-y-4 text-sm"></div>
       </aside>
+      <button id="sidebarToggle"
+              class="absolute -left-5 top-1/2 transform -translate-y-1/2
+                     bg-blue-600 text-white w-5 h-12 flex items-center justify-center
+                     rounded-l hover:bg-blue-700 focus:outline-none">
+        ‹
+      </button>
+    </div>
   </div>
+
+  <!-- ===== Sidebar toggle script ===== -->
+  <script>
+    const toggleBtn = document.getElementById('sidebarToggle');
+    const sidebar   = document.getElementById('watchlist');
+    let hidden = false;
+    toggleBtn.addEventListener('click', () => {
+      hidden = !hidden;
+      if (hidden) {
+        sidebar.classList.add('-translate-x-full');
+        toggleBtn.innerText = '›';
+      } else {
+        sidebar.classList.remove('-translate-x-full');
+        toggleBtn.innerText = '‹';
+      }
+    });
+  </script>
 </body>
 </html>
